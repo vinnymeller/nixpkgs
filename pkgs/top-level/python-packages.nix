@@ -8730,6 +8730,8 @@ self: super: with self; {
 
   nodeenv = callPackage ../development/python-modules/nodeenv { };
 
+  nodejs-bin = callPackage ../development/python-modules/nodejs-bin { };
+
   nodepy-runtime = callPackage ../development/python-modules/nodepy-runtime { };
 
   node-semver = callPackage ../development/python-modules/node-semver { };
