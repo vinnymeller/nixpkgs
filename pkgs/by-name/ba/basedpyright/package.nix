@@ -1,4 +1,5 @@
 {
+  autoPatchelfHook,
   lib,
   python3,
   fetchFromGitHub,
@@ -18,6 +19,7 @@ python3.pkgs.buildPythonApplication rec {
   nativeBuildInputs = [
     python3.pkgs.nodejs-bin
     python3.pkgs.pdm-backend
+    autoPatchelfHook
   ];
 
   propagatedBuildInputs = with python3.pkgs; [
