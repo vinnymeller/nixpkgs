@@ -13467,6 +13467,8 @@ self: super: with self; {
 
   schwifty = callPackage ../development/python-modules/schwifty { };
 
+  scihub = callPackage ../development/python-modules/scihub { };
+
   scim2-filter-parser = callPackage ../development/python-modules/scim2-filter-parser { };
 
   scikit-bio = callPackage ../development/python-modules/scikit-bio { };
