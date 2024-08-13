@@ -28,7 +28,7 @@
 
 
 let
-  version = "1.18.1";
+  version = "1.18.0";
 
   stdenv = throw "Use effectiveStdenv instead";
   effectiveStdenv = if cudaSupport then cudaPackages.backendStdenv else inputs.stdenv;
@@ -93,7 +93,7 @@ effectiveStdenv.mkDerivation rec {
     owner = "microsoft";
     repo = "onnxruntime";
     rev = "refs/tags/v${version}";
-    hash = "sha256-+zWtbLKekGhwdBU3bm1u2F7rYejQ62epE+HcHj05/8A=";
+    hash = "sha256-kYjrHxmJrD2yBftyWWqKDUjgMk1tpYxJIgFMHKi/JTI=";
     fetchSubmodules = true;
   };
 
