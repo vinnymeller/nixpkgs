@@ -152,6 +152,8 @@
     dependencies = with super; [ plenary-nvim ];
   };
 
+  avante-nvim = callPackage ./avante-nvim { };
+
   barbecue-nvim = super.barbecue-nvim.overrideAttrs {
     dependencies = with self; [ nvim-lspconfig nvim-navic nvim-web-devicons ];
     meta = {
