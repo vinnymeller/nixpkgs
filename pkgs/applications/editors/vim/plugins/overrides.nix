@@ -152,7 +152,17 @@
     dependencies = with super; [ plenary-nvim ];
   };
 
-  avante-nvim = callPackage ./avante-nvim { };
+  avante-nvim = (callPackage ./avante-nvim { }).overrideAttrs {
+    dependencies = with self; [
+      copilot-lua
+      dressing-nvim
+      img-clip-nvim
+      nvim-web-devicons
+      nui-nvim
+      plenary-nvim
+      render-markdown
+    ];
+  };
 
   barbecue-nvim = super.barbecue-nvim.overrideAttrs {
     dependencies = with self; [ nvim-lspconfig nvim-navic nvim-web-devicons ];
