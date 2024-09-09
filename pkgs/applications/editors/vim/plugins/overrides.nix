@@ -152,7 +152,7 @@
     dependencies = with super; [ plenary-nvim ];
   };
 
-  avante-nvim = (callPackage ./avante-nvim { }).overrideAttrs {
+  avante-nvim = (callPackage ./avante-nvim { inherit (darwin.apple_sdk.frameworks) Security; }).overrideAttrs {
     dependencies = with self; [
       copilot-lua
       dressing-nvim

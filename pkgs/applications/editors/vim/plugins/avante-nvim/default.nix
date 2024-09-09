@@ -4,6 +4,8 @@
   fetchFromGitHub,
   pkg-config,
   openssl,
+  Security,
+  stdenv,
   vimUtils,
 }:
 
@@ -39,6 +41,8 @@ let
       openssl
     ];
 
+    buildInputs = lib.optionals stdenv.isDarwin [ Security ];
+
     buildPhase = ''
       export PKG_CONFIG_PATH=${openssl.dev}/lib/pkgconfig:$PKG_CONFIG_PATH
       make BUILD_FROM_SOURCE=true
@@ -46,7 +50,7 @@ let
 
     installPhase = ''
       mkdir -p $out
-      cp ./build/*.so $out/
+      cp ./build/*.{dylib,so} $out/
     '';
 
     doCheck = false;
@@ -60,6 +64,6 @@ vimUtils.buildVimPlugin {
   # The plugin expects the dynamic libraries to be under build/
   postInstall = ''
     mkdir -p $out/build
-    ln -s ${avante-lib}/*.so $out/build
+    ln -s ${avante-lib}/*.{dylib,so} $out/build
   '';
 }
