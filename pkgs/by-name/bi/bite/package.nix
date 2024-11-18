@@ -17,6 +17,7 @@
   vulkan-loader,
   stdenv,
   wayland,
+  apple-sdk_15,
 }:
 rustPlatform.buildRustPackage rec {
   pname = "bite";
@@ -61,6 +62,9 @@ rustPlatform.buildRustPackage rec {
     ]
     ++ lib.optionals stdenv.hostPlatform.isLinux [
       wayland
+    ]
+    ++ lib.optionals stdenv.hostPlatform.isDarwin [
+      apple-sdk_15
     ];
 
   runtimeDependencies =
