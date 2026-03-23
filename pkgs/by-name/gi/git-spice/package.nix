@@ -43,11 +43,15 @@ buildGoModule (finalAttrs: {
     rm testdata/script/branch_submit_multiple_pr_templates.txt
   '';
 
+  postBuild = ''
+    mv $GOPATH/bin/gs $GOPATH/bin/git-spice
+  '';
+
   postInstall = lib.optionalString (stdenv.buildPlatform.canExecute stdenv.hostPlatform) ''
-    installShellCompletion --cmd gs \
-      --bash <($out/bin/gs shell completion bash) \
-      --zsh <($out/bin/gs shell completion zsh) \
-      --fish <($out/bin/gs shell completion fish)
+    installShellCompletion --cmd git-spice \
+      --bash <($out/bin/git-spice shell completion bash) \
+      --zsh <($out/bin/git-spice shell completion zsh) \
+      --fish <($out/bin/git-spice shell completion fish)
   '';
 
   passthru.updateScript = nix-update-script { };
@@ -58,6 +62,6 @@ buildGoModule (finalAttrs: {
     changelog = "https://github.com/abhinav/git-spice/blob/${finalAttrs.src.rev}/CHANGELOG.md";
     license = lib.licenses.gpl3Only;
     maintainers = [ lib.maintainers.vinnymeller ];
-    mainProgram = "gs";
+    mainProgram = "git-spice";
   };
 })
